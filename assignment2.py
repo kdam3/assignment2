@@ -41,7 +41,6 @@ def parse_command_args() -> object:
 
 def percent_to_graph(percent: float, length: int=20) -> str:
     "turns a percent 0.0 - 1.0 into a bar graph"
-    ...
     num_hashes = int(percent * length)
     num_spaces = length - num_hashes
     graph = "#" * num_hashes + " " * num_spaces
@@ -50,7 +49,6 @@ def percent_to_graph(percent: float, length: int=20) -> str:
 
 def get_sys_mem() -> int:
     "return total system memory (used or available) in kB"
-    ...
     with open('/proc/meminfo', 'r') as f:
         for line in f:
             if line.startswith("MemTotal"):
@@ -60,7 +58,6 @@ def get_sys_mem() -> int:
 
 def get_avail_mem() -> int:
     "return total memory that is available"
-    ...
     with open('/proc/meminfo', 'r') as f:
         mem_free = None
         swap_free = None
@@ -80,7 +77,6 @@ def get_avail_mem() -> int:
 
 def pids_of_prog(app_name: str) -> list:
     "given an app name, return all pids associated with app"
-    ...
     pid = []
     result = subprocess.check_output(f"pgrep {app_name}").read().strip()
     if result:
@@ -90,11 +86,10 @@ def pids_of_prog(app_name: str) -> list:
 
 def rss_mem_of_pid(proc_id: str) -> int:
     "given a process id, return the resident memory used, zero if not found"
-    ...
     try:
         with open(f"/proc/{proc_id}/stat", 'r') as f:
             stat_info = f.read().split()
-            rss_kb = int(stat_info[23])
+            rss_kb = int(stat_info[23]) * 4
         return rss_kb
 
 def bytes_to_human_r(kibibytes: int, decimal_places: int=2) -> str:
