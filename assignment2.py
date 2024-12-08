@@ -58,7 +58,7 @@ def get_sys_mem() -> int:
 
 def get_avail_mem() -> int:
     "return total memory that is available"
-    with open('/proc/meminfo', 'r') as f:
+    with os.listdir('/proc/meminfo', 'r') as f:
         mem_free = None
         swap_free = None
         mem_available = None
@@ -81,7 +81,7 @@ def pids_of_prog(app_name: str) -> list:
     for pid in os.listdir('/proc'):
         if pid.isdigit():
             try:
-                with open(f'/proc/{pid}/comm', 'r') as f:
+                with os.listdir(f'/proc/{pid}/comm', 'r') as f:
                     process_name = f.read().strip()
                     if process_name == app_name:
                         pid.append(pid)
