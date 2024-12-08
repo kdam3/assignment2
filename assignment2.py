@@ -132,7 +132,7 @@ if __name__ == "__main__":
     # get total memory
     # call percent to graph
     # print
-    print(f"Total Memory: {total_mem) in kB")
+    print(f"Total Memory: {total_mem} in kB")
     print(f"Available Memory: {available_mem} in kB")
     print(f"Memory Used: {used_mem} in kB")
 
