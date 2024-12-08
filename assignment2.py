@@ -71,7 +71,7 @@ def get_avail_mem() -> int:
             elif line.startswith("MemFree"):
                 mem_free = int(line.split()[1])
             elif line.startswith("SwapFree"):
-                swap_Free = int(line.split()[1])
+                swap_free = int(line.split()[1])
 
         if mem_available is not None:
             return mem_available
@@ -82,7 +82,7 @@ def pids_of_prog(app_name: str) -> list:
     "given an app name, return all pids associated with app"
     ...
     pid = []
-    result = os.open(f"pgrep {app_name}").read().strip()
+    result = subprocess.check_output(f"pgrep {app_name}").read().strip()
     if result:
         pigs = result.splitlines()
     return pids
