@@ -78,7 +78,7 @@ def get_avail_mem() -> int:
 def pids_of_prog(app_name: str) -> list:
     "given an app name, return all pids associated with app"
     pid = []
-    result = subprocess.check_output(f"pgrep {app_name}").read().strip()
+    result = os.popen(f"pgrep {app_name}").read().strip()
     if result:
         pigs = result.splitlines()
     return pids
