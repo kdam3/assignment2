@@ -42,7 +42,7 @@ def parse_command_args() -> object:
 def percent_to_graph(percent: float, length: int=20) -> str:
     "turns a percent 0.0 - 1.0 into a bar graph"
     ...
-    num_hashes =  int(percentage * length)
+    num_hashes = int(percent * length)
     num_spaces = length - num_hashes
     graph = "#" * num_hashes + " " * num_spaces
     return graph
