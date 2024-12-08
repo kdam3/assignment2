@@ -3,18 +3,18 @@
 '''
 OPS445 Assignment 2
 Program: assignment2.py 
-Author: "Student Name"
-Semester: "Enter Winter/Summer/Fall Year"
+Author: "Kameron Dam"
+Semester: "Fall 2024"
 
 The python code in this file is original work written by
-"Student Name". No code in this file is copied from any other source 
+"Kameron Dam". No code in this file is copied from any other source 
 except those provided by the course instructor, including any person, 
 textbook, or on-line resource. I have not shared this python script 
 with anyone or anything except for submission for grading.  
 I understand that the Academic Honesty Policy will be enforced and 
 violators will be reported and appropriate action will be taken.
 
-Description: <Enter your documentation here>
+Description: <github.com/kdam3/assignment2-versianA>
 
 '''
 
@@ -37,6 +37,10 @@ def parse_command_args() -> object:
 def percent_to_graph(percent: float, length: int=20) -> str:
     "turns a percent 0.0 - 1.0 into a bar graph"
     ...
+    num_hashes =  int(percentage * length)
+    num_spaces = length - num_hashes
+    graph = "#" * num_hashes + " " * num_spaces
+    return graph
 # percent to graph function
 
 def get_sys_mem() -> int:
