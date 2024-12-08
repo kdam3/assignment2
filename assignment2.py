@@ -49,6 +49,7 @@ def percent_to_graph(percent: float, length: int=20) -> str:
 
 def get_sys_mem() -> int:
     "return total system memory (used or available) in kB"
+    mem_total = 10
     return mem_total
 
 
