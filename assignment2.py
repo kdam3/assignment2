@@ -46,7 +46,12 @@ def percent_to_graph(percent: float, length: int=20) -> str:
 def get_sys_mem() -> int:
     "return total system memory (used or available) in kB"
     ...
-    with open
+    with open('/proc/meminfo', 'r') as f:
+        for line in f:
+            if line.startswith("MemTotal"):
+                mem_total = int(line.split([1]))
+                return mem_total
+
 
 def get_avail_mem() -> int:
     "return total memory that is available"
