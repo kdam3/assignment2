@@ -78,10 +78,16 @@ def get_avail_mem() -> int:
 def pids_of_prog(app_name: str) -> list:
     "given an app name, return all pids associated with app"
     pid = []
-    result = os.popen(f"pgrep {app_name}").read().strip()
-    if result:
-        pigs = result.splitlines()
-    return pids
+    for pid in os.listdir('/proc'):
+        if pid.isdigit():
+            try:
+                with open(f'/proc/{pid}/comm', 'r') as f:
+                    process_name = f.read().strip()
+                    if process_name == app_name:
+                        pid.append(pid)
+            except IOError:
+                continue
+    return pid
 
 
 def rss_mem_of_pid(proc_id: str) -> int:
