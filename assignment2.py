@@ -14,7 +14,7 @@ with anyone or anything except for submission for grading.
 I understand that the Academic Honesty Policy will be enforced and 
 violators will be reported and appropriate action will be taken.
 
-Description: <github.com/kdam3/assignment2-versianA>
+Description: <github.com/kdam3/assignment2-versionA>
 
 '''
 
@@ -46,6 +46,7 @@ def percent_to_graph(percent: float, length: int=20) -> str:
 def get_sys_mem() -> int:
     "return total system memory (used or available) in kB"
     ...
+    with open
 
 def get_avail_mem() -> int:
     "return total memory that is available"
