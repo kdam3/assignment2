@@ -27,8 +27,8 @@ def parse_command_args() -> object:
     parser.add_argument("-l", "--length", type=int, default=20, help="Specify the length of the graph. Default is 20.")
     # add argument for "human-readable". USE -H, don't use -h! -h is reserved for --help which is created automatically.
     parser.add_argument(
-        "-H", "--human readable",
-        action="store_strue",
+        "-H", "--human-readable",
+        action="store_true",
         help="Prints human readable format"
     )
     # check the docs for an argparse option to store this as a boolean.
