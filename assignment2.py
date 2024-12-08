@@ -56,7 +56,7 @@ def get_sys_mem() -> int:
 def get_avail_mem() -> int:
     "return total memory that is available"
     ...
-    with open('/proc/meminfo', 'r+' as f:
+    with open('/proc/meminfo', 'r' as f:
         mem_free = None
         swap_free = None
         mem_available = None
