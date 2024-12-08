@@ -49,54 +49,21 @@ def percent_to_graph(percent: float, length: int=20) -> str:
 
 def get_sys_mem() -> int:
     "return total system memory (used or available) in kB"
-    with open('/proc/meminfo', 'r') as f:
-        for line in f:
-            if line.startswith("MemTotal"):
-                mem_total = int(line.split()[1])
-                return mem_total
+    return mem_total
 
 
 def get_avail_mem() -> int:
     "return total memory that is available"
-    with os.listdir('/proc/meminfo', 'r') as f:
-        mem_free = None
-        swap_free = None
-        mem_available = None
-        for line in f:
-            if line.startswith("MemAvailable"):
-                mem_available = int(line.split()[1])
-            elif line.startswith("MemFree"):
-                mem_free = int(line.split()[1])
-            elif line.startswith("SwapFree"):
-                swap_free = int(line.split()[1])
-
-        if mem_available is not None:
-            return mem_available
-        else:
-            return mem_free + swap_free
+    return 1
 
 def pids_of_prog(app_name: str) -> list:
     "given an app name, return all pids associated with app"
-    pid = []
-    for pid in os.listdir('/proc'):
-        if pid.isdigit():
-            try:
-                with os.listdir(f'/proc/{pid}/comm', 'r') as f:
-                    process_name = f.read().strip()
-                    if process_name == app_name:
-                        pid.append(pid)
-            except IOError:
-                continue
     return pid
 
 
 def rss_mem_of_pid(proc_id: str) -> int:
     "given a process id, return the resident memory used, zero if not found"
-    try:
-        with open(f"/proc/{proc_id}/stat", 'r') as f:
-            stat_info = f.read().split()
-            rss_kb = int(stat_info[23]) * 4
-        return rss_kb
+    return 1
 
 def bytes_to_human_r(kibibytes: int, decimal_places: int=2) -> str:
     "turn 1,024 into 1 MiB, for example"
